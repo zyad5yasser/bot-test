@@ -95,18 +95,18 @@ let handler = async (m, { conn, text, command,usedPrefix }) => {
   ];
     
     if (!lister.includes(feature)) {
-        return conn.sendButton(m.chat, 'عليك اختيار احد الازرار لعرض الصور', 'zezo',pp, [['صور السقف', `${command} سقف`],['صور بانوهات',`${usedPrefix + command} بنوهات`],['صور المكاتب',`${usedPrefix + command} مكاتب`]],null,null, m);
+        return conn.sendButton(m.chat, 'عليك اختيار احد الازرار لعرض الصور', 'zezo',pp, [['صور السقف', `${usedPrefix + command} سقف`],['صور بانوهات',`${usedPrefix + command} بنوهات`],['صور المكاتب',`${usedPrefix + command} مكاتب`]],null,null, m);
     }
     
     if (feature == 'سقف') {
         const _skf = skf[Math.floor(skf.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _skf, [['صورة أخرى', `${command} سقف`]],null,null, m);
+        conn.sendButton(m.chat, '', '', _skf, [['صورة أخرى', `${usedPrefix + command} سقف`]],null,null, m);
     } else if (feature == 'مكاتب') {
         const _Erth = Erth[Math.floor(Erth.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _Erth, [['صورة أخرى', `${command} مكاتب`]],null,null, m);
+        conn.sendButton(m.chat, '', '', _Erth, [['صورة أخرى', `${usedPrefix + command} مكاتب`]],null,null, m);
     } else if (feature == 'بنوهات') {
         const _hawat = hawat[Math.floor(hawat.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _hawat, [['صورة أخرى', `${command} بنوهات`]],null,null, m);
+        conn.sendButton(m.chat, '', '', _hawat, [['صورة أخرى', `${usedPrefix + command} بنوهات`]],null,null, m);
     }
 };
 
