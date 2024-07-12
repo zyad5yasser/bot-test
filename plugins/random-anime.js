@@ -13,7 +13,7 @@ const handler = async (m, {command, conn, usedPrefix}) => {
   //conn.sendFile(m.chat, haha, 'error.jpg', `_${command}_`, m);
 conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `${usedPrefix + command}`],['القائمه الاساسيه',`${usedPrefix + 'انميس'}`]],null, null, m)
   }else if (command ==='ايديت-ساسكي') {
-    const Sasken = [
+    const saske = [
     "https://telegra.ph/file/a56b97c43ab7ef17f3163.mp4",
     "https://telegra.ph/file/71d2306f073fdfda0d86e.mp4",
     "https://telegra.ph/file/71d2306f073fdfda0d86e.mp4",
@@ -39,8 +39,12 @@ conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `
   ]
   let haha = await henata[Math.floor(henata.length * Math.random())];
   conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `${usedPrefix + command}`],['القائمه الاساسيه',`${usedPrefix + 'انميس'}`]],null, null, m)
+  }else if (command ==='ايديت-ايتاتشي') {
+    const itachi = ["https://telegra.ph/file/ddebebc9e84bb23359ac6.mp4", "https://telegra.ph/file/a5645f1f9bc1b3a0a1a46.mp4", "https://telegra.ph/file/1f2e49f57941cfe3e81bc.mp4", "https://telegra.ph/file/6b50d14dc3bb4253920c1.mp4", "https://telegra.ph/file/5f5478b1174281b8e3d52.mp4", "https://telegra.ph/file/4f3e94ebe2f000af832d6.mp4", "https://telegra.ph/file/f66d39b52e8b5962184cd.mp4", "https://telegra.ph/file/ab154b3e813ccde09d8b2.mp4", "https://telegra.ph/file/04af66310157329c624fc.mp4"];
+    let haha = await itachi[Math.floor(itachi.length * Math.random())];
+    conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `${usedPrefix + command}`],['القائمه الاساسيه',`${usedPrefix + 'انميس'}`]],null, null, m)
   }
 };
-handler.command = handler.help = ['ايديت-نيزوكو','ايديت-ساسكي','ايديت-هيناتا'];
+handler.command = handler.help = ['ايديت-نيزوكو','ايديت-ساسكي','ايديت-هيناتا','ايديت-ايتاتشي'];
 handler.tags = ['anime'];
 export default handler;
