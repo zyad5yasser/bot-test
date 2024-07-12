@@ -48,11 +48,11 @@ conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `
     let haha = await keneki[Math.floor(keneki.length * Math.random())];
     conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `${usedPrefix + command}`],['القائمه الاساسيه',`${usedPrefix + 'انميس'}`]],null, null, m)
   }else if (command ==='ايديت-ميكاسا') {
-    const mikasa = 
+    const mikasa = ["https://telegra.ph/file/319e2ea6383eebfbd1823.mp4", "https://telegra.ph/file/8426a4e879adca3389d05.mp4", "https://telegra.ph/file/65a59fdbd9057e400c6bf.mp4", "https://telegra.ph/file/bd5e9e73352d875453628.mp4", "https://telegra.ph/file/23e36a8f6be40b1fa3e29.mp4", "https://telegra.ph/file/a8df47707a589ce929c45.mp4", "https://telegra.ph/file/228309782a9c54de79595.mp4", "https://telegra.ph/file/0a8f3eb41dd28dbebbce1.mp4", "https://telegra.ph/file/b6fc739ec215478222282.mp4", "https://telegra.ph/file/08f6b7227ea798d339400.mp4"]
     let haha = await mikasa[Math.floor(mikasa.length * Math.random())];
     conn.sendButton(m.chat, `_${command}_`.trim(), author, haha, [['المزيد', `${usedPrefix + command}`],['القائمه الاساسيه',`${usedPrefix + 'انميس'}`]],null, null, m)
   }
 };
-handler.command = handler.help = ['ايديت-نيزوكو','ايديت-ساسكي','ايديت-هيناتا','ايديت-ايتاتشي','ايديت-كانكي'];
+handler.command = handler.help = ['ايديت-نيزوكو','ايديت-ساسكي','ايديت-هيناتا','ايديت-ايتاتشي','ايديت-كانكي','ايديت-ميكاسا'];
 handler.tags = ['anime'];
 export default handler;
