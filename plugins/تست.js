@@ -1,7 +1,39 @@
-let handler = async (m, { conn, text, command,usedPrefix }) => {
-    let lister = ["سقف", "بنوهات", "مكاتب"];
+import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+
+let handler = async (m, { conn, text, command, usedPrefix }) => {
+    let lister = ["سقف", "بنوهات", "مكاتب", "سرر"];
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split(" ");
-    const pp = '';
+    
+    const row = [
+        { header: '⌈ 𝐀𝐋𝐇𝐌𝐃 ⌋', title: "❛❛ قـسـم گـرانــيـش ❛❛", description: '', id: `${usedPrefix + command} كرانيش` },
+        { header: '⌈ 𝐀𝐋𝐇𝐌𝐃 ⌋', title: "❛❛ قـســم الــسـقـف ❛❛", description: '', id:`${usedPrefix + command} سقف` },
+        { header: '⌈ 𝐀𝐋𝐇𝐌𝐃 ⌋', title: "❛❛ قـسـم الــمـگاتــب ❛❛", description: '', id: `${usedPrefix + command} مكاتب` },
+        { header: '⌈ 𝐀𝐋𝐇𝐌𝐃 ⌋', title: "❛❛ قـسـم الــبانـوهـات ❛❛", description: '', id: `${usedPrefix + command} بانوهات` },
+        { header: '⌈ 𝐀𝐋𝐇𝐌𝐃 ⌋', title: "❛❛ قـسـم الــسـرر ❛❛", description: '', id: `${usedPrefix + command} سرر` }
+    ];
+
+    const mainText = `مًرحًبًآ بًکْمً فُيَ: 
+『 𝐀𝐋𝐇𝐌𝐃 𝐃𝐄𝐂𝐎𝐑𝐀𝐓 』
+> عــلـيگ اخــتـياࢪ احـن الـاقـسا۾
+┇↜ الــقـسـم الـاول 
+ 「 .صور سقف 」
+> لــرؤيـة تـصـامـيـم الـاسـقـف 
+┇↜ الـقــسـم الـثـانـي
+ 「 .صور مكاتب 」
+> لـرؤيـة تـصـامـيـم الـمـكـاتـب
+┇↜ الــقـسـم الـثـالـث 
+ 「 .صور بانوهات 」
+> لــࢪؤيـة تـصـامـيـم الـبـانـوهـات
+┇↜ الــقـسـم الـࢪابــع 
+ 「 .صور كرانيش 」
+> لـࢪؤيـة تـصـامـيـم الگـࢪانـيـش
+┇↜ الـقــسـم الـخـامـس 
+ 「 .صور سرر 」
+> لـࢪؤيـة تـصـامـيـم الـسـرر 
+انــتــهـت گـل الـاقـسـام 
+> اگـتـب .صور وبعدها كل قسم تحتاجه او اختار من القائمه ف الاسفل 
+┇↜ شــعـارنـا: 「 نـحـن مـتـمـيـزون عـن الـاخـريـن 」`;
+
     const skf = [
         "https://telegra.ph/file/1d0cfaa5edc276c0aee24.jpg",
         "https://telegra.ph/file/2e34df869daceff8b0854.jpg",
@@ -52,16 +84,17 @@ let handler = async (m, { conn, text, command,usedPrefix }) => {
         "https://telegra.ph/file/ed91f359f33c3701f7628.jpg",
         "https://telegra.ph/file/13b7076d8915b936c873e.jpg"
     ];
-    
+
     const Erth = [
-        'https://telegra.ph/file/2d9e02440f5eab022919a.jpg',
-        'https://telegra.ph/file/866f84289c45a81ddad32.jpg',
-        'https://telegra.ph/file/866f84289c45a81ddad32.jpg'
+        "https://telegra.ph/file/27ecc93a8abe3da69deb0.jpg", 
+        "https://telegra.ph/file/5362f295f7c84257d882f.jpg", 
+        " https://telegra.ph/file/440ffb9e26259987e90e6.jpg", 
+        "https://telegra.ph/file/62d2420a5e1e6736b8b5a.jpg", 
+        " https://telegra.ph/file/5da2a5be94582b1d5f3e2.jpg"
     ];
-    
+
     const hawat = [
-    "https://telegra.ph/file/44dcfe4efd1b85071b307.jpg",
-    "https://telegra.ph/file/d5e89af69dc23779aedd9.jpg",
+        "https://telegra.ph/file/d5e89af69dc23779aedd9.jpg",
     "https://telegra.ph/file/9880138bde78ced8a75f9.jpg",
     "https://telegra.ph/file/c56114c07ceeeae9f5fcd.jpg",
     "https://telegra.ph/file/e7d371fed434fd7e79868.jpg",
@@ -92,26 +125,123 @@ let handler = async (m, { conn, text, command,usedPrefix }) => {
     "https://telegra.ph/file/48f420cfa699c2480bcd3.jpg",
     "https://telegra.ph/file/941d5add7d29c827949c3.jpg",
     "https://telegra.ph/file/d86de4b1082b7451fcee9.jpg"
-  ];
-    
+    ];
+
     if (!lister.includes(feature)) {
-        return conn.sendButton(m.chat, 'عليك اختيار احد الازرار لعرض الصور', 'zezo',pp, [['صور السقف', `${usedPrefix + command} سقف`],['صور بانوهات',`${usedPrefix + command} بنوهات`],['صور المكاتب',`${usedPrefix + command} مكاتب`]],null,null, m);
+        const mediaMessage = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/276b85312b4e6cec1d448.jpg' } }, { upload: conn.waUploadToServer });
+        let msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    interactiveMessage: {
+                        body: { text: mainText },
+                        footer: { text: '𝐀𝐋𝐇𝐌𝐃 𝐃𝐄𝐂𝐎𝐑𝐀𝐓 ᥫ᭡' },
+                        header: {
+                            hasMediaAttachment: true,
+                            imageMessage: mediaMessage.imageMessage,
+                        },
+                        nativeFlowMessage: {
+                            buttons: [
+                                {
+                                    name: 'single_select',
+                                    buttonParamsJson: JSON.stringify({
+                                        title: '「 الـاقـسـام ᥫ᭡ 」',
+                                        sections: [
+                                            {
+                                                title: '『❤️‍🔥』الـاقـسـام 《',
+                                                highlight_label: '⌈ 𝐙𝐞𝐙𝐨 𝐁𝐨𝐓 ᥫ᭡ ⌋',
+                                                rows: row
+                                            },
+                                        ]
+                                    }),
+                                    messageParamsJson: ''
+                                },
+                                {
+                                    name: 'quick_reply',
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: 'لـمـعـرفـة صـانـع الـبـوت',
+                                        id: `${usedPrefix + 'المطور'}`
+                                    })
+                                },
+                                {
+                                    name: "cta_url",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "『✨』قــنـاة الـمـطـور",
+                                        url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
+                                        merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
+                                    })
+                                },
+                            ]
+                        }
+                    }
+                }
+            }
+        }, { userJid: conn.user.jid, quoted: m });
+        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
     }
-    
-    if (feature == 'سقف') {
-        const _skf = skf[Math.floor(skf.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _skf, [['صورة أخرى', `${usedPrefix + command} سقف`]],null,null, m);
-    } else if (feature == 'مكاتب') {
-        const _Erth = Erth[Math.floor(Erth.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _Erth, [['صورة أخرى', `${usedPrefix + command} مكاتب`]],null,null, m);
-    } else if (feature == 'بنوهات') {
-        const _hawat = hawat[Math.floor(hawat.length * Math.random())];
-        conn.sendButton(m.chat, '', '', _hawat, [['صورة أخرى', `${usedPrefix + command} بنوهات`]],null,null, m);
+
+    let imageUrl;
+    if (feature === 'سقف') {
+        imageUrl = skf[Math.floor(skf.length * Math.random())];
+    } else if (feature === 'سرر') {
+        imageUrl = Erth[Math.floor(Erth.length * Math.random())];
+    } else if (feature === 'بانوهات') {
+        imageUrl = hawat[Math.floor(hawat.length * Math.random())];
+    }
+
+    if (imageUrl) {
+        var messa = await prepareWAMessageMedia({ image: { url: imageUrl } }, { upload: conn.waUploadToServer });
+let msg = generateWAMessageFromContent(m.chat, {
+      viewOnceMessage: {
+        message: {
+          interactiveMessage: {
+            body: { text: `هــذه صـوره لــ: ${feature}\n┇↜ مــلـحــوظـه\n> يـمـكـن ان تـتـكـرر الـصـور`},
+            footer: { text: '𝐙𝐞𝐙𝐨 𝐁𝐨𝐓 ᥫ᭡' },
+            header: {
+              hasMediaAttachment: true,
+              imageMessage: messa.imageMessage, 
+            },
+            nativeFlowMessage: {
+              buttons: [ 
+                {
+                  name: 'single_select',
+                   buttonParamsJson: JSON.stringify({
+                   title: '「 الـاقـسـام ᥫ᭡ 」',
+                   sections: [
+                   {
+                     title: '『❤️‍🔥』الـاقـسـام 《',
+                     highlight_label: '⌈ 𝐙𝐞𝐙𝐨 𝐁𝐨𝐓 ᥫ᭡ ⌋',
+                       rows: row },
+                   ] 
+                   }), 
+                  messageParamsJson: ''
+                 },
+                {
+                  name: 'quick_reply',
+                  buttonParamsJson: JSON.stringify({
+                  display_text:'「 تـصـمـيـم آخــر ᥫ᭡ 」',
+                  id: `${usedPrefix + command} ${feature}`
+                })
+               },
+                {
+                                name: "cta_url",
+                                buttonParamsJson: JSON.stringify({
+                                    display_text: "『✨』قـنــاة الـمـطـور",                   
+                                    url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a",
+                                    merchant_url: "https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a"
+                                })
+                }, 
+              ]
+             } 
+            } 
+          } 
+        } 
+      }, {userJid: conn.user.jid, quoted: m});
+    conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id}); 
     }
 };
 
 handler.help = ['Z E Z O'];
 handler.tags = ['Z E Z O'];
-handler.command = ['تست'];
+handler.command = ['ت'];
 
 export default handler;
