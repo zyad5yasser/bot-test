@@ -84,6 +84,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         "https://telegra.ph/file/ed91f359f33c3701f7628.jpg",
         "https://telegra.ph/file/13b7076d8915b936c873e.jpg"
     ];
+    const kranesh =["https://telegra.ph/file/d92350159211472fceb6a.jpg", 
+                    "https://telegra.ph/file/93d0fa5d07b0c03229ff3.jpg", 
+                    " https://telegra.ph/file/edfa956f471da572c21ac.jpg", 
+                    "https://telegra.ph/file/e9b755d601ed926a6cf1e.jpg", 
+                    " https://telegra.ph/file/cc8be12671b018b773e03.jpg", 
+                    "https://telegra.ph/file/ddf792efb428e6cefa493.jpg", 
+                    " https://telegra.ph/file/632d4c74bd3e7fedb6842.jpg"
+                    ]; 
 
     const Erth = [
         "https://telegra.ph/file/27ecc93a8abe3da69deb0.jpg", 
@@ -186,8 +194,11 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         imageUrl = Erth[Math.floor(Erth.length * Math.random())];
     } else if (feature === 'بانوهات') {
         imageUrl = hawat[Math.floor(hawat.length * Math.random())];
-    }
-
+    } else if (feature ==='كرانيش') {
+imageUrl = kranesh[Math.floor(kranesh.length * Math.random())];
+    } else if (feature ==='مكاتب') {
+        imageUrl = mkateb[Math.floor(mkateb.length * Math.random())];
+        } 
     if (imageUrl) {
         var messa = await prepareWAMessageMedia({ image: { url: imageUrl } }, { upload: conn.waUploadToServer });
 let msg = generateWAMessageFromContent(m.chat, {
