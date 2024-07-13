@@ -134,6 +134,20 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
     "https://telegra.ph/file/941d5add7d29c827949c3.jpg",
     "https://telegra.ph/file/d86de4b1082b7451fcee9.jpg"
     ];
+    const mkateb = [
+    "https://telegra.ph/file/65061c4453578a81a4e6d.jpg",
+    "https://telegra.ph/file/49ac0718d1d4c11a1d638.jpg",
+    "https://telegra.ph/file/7a7ad006c7a988b705f90.jpg",
+    "https://telegra.ph/file/e4e64ff436bd54a5ce082.jpg",
+    "https://telegra.ph/file/90d7fb2cd85fb1f67cc81.jpg",
+    "https://telegra.ph/file/50a051aa6001ca6468dd0.jpg",
+    "https://telegra.ph/file/dfc7d41a57f436bfe010f.jpg",
+    "https://telegra.ph/file/59ceabd933ffd8549d8b3.jpg",
+    "https://telegra.ph/file/6c036418db8090fd45f32.jpg",
+    "https://telegra.ph/file/6b2f253d7ca54494647ac.jpg",
+    "https://telegra.ph/file/0fe582a2e765e26499213.jpg",
+    "https://telegra.ph/file/552c3b1704c4c600d1e59.jpg"
+]; 
 
     if (!lister.includes(feature)) {
         const mediaMessage = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/276b85312b4e6cec1d448.jpg' } }, { upload: conn.waUploadToServer });
