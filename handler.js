@@ -1759,8 +1759,8 @@ global.dfail = (type, m, conn) => {
   const msg = {
     rowner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
     owner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
-    mods: tradutor.texto3,
-    premium: tradutor.texto4,
+    mods: '',
+    premium:'',
     group:'هــذا الـامــࢪ فـى الــجــࢪوبــات فـقــط「 🚨 」',
     private:'هــذا الـامــࢪ فـى الــخـاص فـقـط「 🚨 」',
     admin:'هــذا الـامــࢪ لـلادمــن فـقــط「 🚨 」',
@@ -1769,7 +1769,7 @@ global.dfail = (type, m, conn) => {
     restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title:'「 تــــحــذيـــر!! 」', body:'𝒁𝑬𝒁𝑶 3𝑴𝑲', thumbnail: 'https://telegra.ph/file/157e45e1fdcb55ce20473.jpg', sourceUrl: 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a' } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title:'「 تــــحــذيـــر!! 」', body:'𝒁𝑬𝒁𝑶 3𝑴𝑲', thumbnail: 'https://telegra.ph/file/157e45e1fdcb55ce20473.jpg', sourceUrl: 'https://atom.bio/zyad_yasser' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
