@@ -1,0 +1,43 @@
+import { areJidsSameUser } from '@adiwajshing/baileys'
+
+let handler = async (m, { conn, args, participants }) => {
+  let users = Object.entries(global.db.data.users).map(([key, value]) => {
+    return {...value, jid: key}
+  })
+  let sortedExp = users.map(toNumber('exp')).sort(sort('exp'))
+  let sortedLim = users.map(toNumber('diamond')).sort(sort('diamond'))
+  let sortedLevel = users.map(toNumber('level')).sort(sort('level'))
+  let usersExp = sortedExp.map(enumGetKey)
+  let usersLim = sortedLim.map(enumGetKey)
+  let usersLevel = sortedLevel.map(enumGetKey)
+  let len = args[0] && args[0].length > 0 ? Math.min(50, Math.max(parseInt(args[0]), 5)) : Math.min(5, sortedExp.length)
+  let text = `
+       ≡ *المتصدرين*
+
+▢ *TOP ${len} XP* 🧬
+انت : *${usersExp.indexOf(m.sender) + 1}* ل *${usersExp.length}*
+
+${sortedExp.slice(0, len).map(({ jid, exp }, i) => `*${i + 1}.* ${participants.some(p => areJidsSameUser(jid, p.id)) ? `(${conn.getName(jid)}) wa.me/` : '@'}${jid.split`@`[0]} ➭ _*XP ${exp}*_`).join`\n`}
+
+▢ *TOP ${len} العدد💎* 
+انت : *${usersLim.indexOf(m.sender) + 1}* ل *${usersLim.length}*
+
+${sortedLim.slice(0, len).map(({ jid, diamond }, i) => `*${i + 1}.* ${participants.some(p => areJidsSameUser(jid, p.id)) ? `(${conn.getName(jid)}) wa.me/` : '@'}${jid.split`@`[0]} ➭ _*
+الماس ${diamond}*_`).join`\n`}
+
+▢ *TOP ${len} مستوي* ⬆️
+انت : *${usersLevel.indexOf(m.sender) + 1}* ل *${usersLevel.length}*
+
+${sortedLevel.slice(0, len).map(({ jid, level }, i) => `*${i + 1}.* ${participants.some(p => areJidsSameUser(jid, p.id)) ? `(${conn.getName(jid)}) wa.me/` : '@'}${jid.split`@`[0]} ➭ _*مستوي ${level}*_`).join`\n`}
+`.trim()
+  conn.reply(m.chat, text, m, {
+    mentions: [...usersExp.slice(0, len), ...usersLim.slice(0, len), ...usersLevel.slice(0, len)].filter(v => !participants.some(p => areJidsSameUser(v, p.id) )) 
+})
+
+}
+handler.help = ['leaderboard']
+handler.tags = ['econ']
+handler.command = ['ترتيب', 'top'] 
+
+export default handler
+
