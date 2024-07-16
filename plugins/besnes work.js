@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+/*import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
     let lister = ["سقف", "بنوهات", "مكاتب", "سرر"];
