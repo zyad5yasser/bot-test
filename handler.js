@@ -1757,19 +1757,19 @@ global.dfail = (type, m, conn) => {
   const tradutor = _translate.handler.dfail
 
   const msg = {
-    rowner: tradutor.texto1,
-    owner: tradutor.texto2,
+    rowner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
+    owner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
     mods: tradutor.texto3,
     premium: tradutor.texto4,
-    group: tradutor.texto5,
-    private: tradutor.texto6,
-    admin: tradutor.texto7,
-    botAdmin: tradutor.texto8,
-    unreg: tradutor.texto9,
-    restrict: tradutor.texto10,
+    group:'هــذا الـامــࢪ فـى الــجــࢪوبــات فـقــط「 🚨 」',
+    private:'هــذا الـامــࢪ فـى الــخـاص فـقـط「 🚨 」',
+    admin:'هــذا الـامــࢪ لـلادمــن فـقــط「 🚨 」',
+    botAdmin:'「 مــࢪحـبـا 」\nاࢪفــعـنـي ادمــن وســأعـمــل 🐦',
+    unreg:'「 تــحــذيــࢪ 🚨 」\nلــســت مــســجــل لــلــتــسـجـيـل اكــتــب\n.سجلني اسمك.عمرك',
+    restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl: tradutor.texto11[2] } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title:'「 تــــحــذيـــر!! 」', body:'𝒁𝑬𝒁𝑶 3𝑴𝑲', thumbnail: 'https://telegra.ph/file/157e45e1fdcb55ce20473.jpg', sourceUrl: 'https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
