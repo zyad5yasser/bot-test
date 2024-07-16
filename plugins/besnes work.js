@@ -269,4 +269,4 @@ handler.help = ['Z E Z O'];
 handler.tags = ['Z E Z O'];
 handler.command = ['صور'];
 
-export default handler;
+export default handler;*/
