@@ -1760,20 +1760,20 @@ global.dfail = (type, m, conn) => {
   const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
   const tradutor = _translate.handler.dfail
 
-  const msg = {
-    rowner: tradutor.texto1,
-    owner: tradutor.texto2,
-    mods: tradutor.texto3,
-    premium: tradutor.texto4,
-    group: tradutor.texto5,
-    private: tradutor.texto6,
-    admin: tradutor.texto7,
-    botAdmin: tradutor.texto8,
-    unreg: tradutor.texto9,
-    restrict: tradutor.texto10,
+    const msg = {
+    rowner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
+    owner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
+    mods: '',
+    premium:'',
+    group:'هــذا الـامــࢪ فـى الــجــࢪوبــات فـقــط「 🚨 」',
+    private:'هــذا الـامــࢪ فـى الــخـاص فـقـط「 🚨 」',
+    admin:'هــذا الـامــࢪ لـلادمــن فـقــط「 🚨 」',
+    botAdmin:'「 مــࢪحـبـا 」\nاࢪفــعـنـي ادمــن وســأعـمــل 🐦',
+    unreg:'「 تــحــذيــࢪ 🚨 」\nلــســت مــســجــل لــلــتــسـجـيـل اكــتــب\n.سجلني اسمك.عمرك',
+    restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl: tradutor.texto11[2] } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl:'https://atom.bio/zyad_yasser' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
