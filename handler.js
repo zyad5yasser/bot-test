@@ -8,6 +8,7 @@ import fs from 'fs';
 import chalk from 'chalk';
 import mddd5 from 'md5';
 import ws from 'ws';
+let mconn;
 
 /**
  * @type {import('@whiskeysockets/baileys')}
@@ -46,6 +47,7 @@ export async function handler(chatUpdate) {
       return;
     }
     global.mconn = m
+    mconn = m
     m.exp = 0;
     m.money = false;
     m.limit = false;
@@ -71,6 +73,7 @@ export async function handler(chatUpdate) {
         if (!isNumber(user.money)) user.money = 15;
         if (!('language' in user)) user.language = 'es';
         if (!('registered' in user)) user.registered = false;
+        if (!('mute' in user)) user.mute = false
         if (!user.registered) {
           if (!('name' in user)) user.name = m.name;
           if (!isNumber(user.age)) user.age = -1;
@@ -608,6 +611,7 @@ export async function handler(chatUpdate) {
           gadodado: 0,
           gajah: 0,
           gamemines: false,
+          mute: false,
           ganja: 0,
           gardenboxs: 0,
           gems: 0,
@@ -1755,24 +1759,21 @@ global.dfail = (type, m, conn) => {
   const idioma = datas.db.data.users[m.sender].language || 'es';
   const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
   const tradutor = _translate.handler.dfail
-  const cannel ='https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a'; 
-  const pp ='https://telegra.ph/file/157e45e1fdcb55ce20473.jpg'; 
-  const zezo ='𝒁𝑬𝒁𝑶 3𝑴𝑲'; 
-  const desc ='「 تــــحــذيـــر!! 」'; 
+
   const msg = {
-    rowner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
-    owner:'يــا صــديـقـي هــذا الـامــࢪ لـلـمـطـوࢪ فـقــط「 🚨 」',
-    mods: '',
-    premium:'',
-    group:'هــذا الـامــࢪ فـى الــجــࢪوبــات فـقــط「 🚨 」',
-    private:'هــذا الـامــࢪ فـى الــخـاص فـقـط「 🚨 」',
-    admin:'هــذا الـامــࢪ لـلادمــن فـقــط「 🚨 」',
-    botAdmin:'「 مــࢪحـبـا 」\nاࢪفــعـنـي ادمــن وســأعـمــل 🐦',
-    unreg:'「 تــحــذيــࢪ 🚨 」\nلــســت مــســجــل لــلــتــسـجـيـل اكــتــب\n.سجلني اسمك.عمرك',
-    restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
+    rowner: tradutor.texto1,
+    owner: tradutor.texto2,
+    mods: tradutor.texto3,
+    premium: tradutor.texto4,
+    group: tradutor.texto5,
+    private: tradutor.texto6,
+    admin: tradutor.texto7,
+    botAdmin: tradutor.texto8,
+    unreg: tradutor.texto9,
+    restrict: tradutor.texto10,
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: pp, sourceUrl: cannel } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: imagen1, sourceUrl: tradutor.texto11[2] } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
