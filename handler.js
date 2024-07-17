@@ -1773,7 +1773,7 @@ global.dfail = (type, m, conn) => {
     restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail:'https://telegra.ph/file/157e45e1fdcb55ce20473.jpg', sourceUrl:'https://atom.bio/zyad_yasser' } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title:'「 تــــحــذيـــر!! 」', body:'𝒁𝑬𝒁𝑶 3𝑴𝑲', thumbnail:imagen1, sourceUrl:'https://atom.bio/zyad_yasser' } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
