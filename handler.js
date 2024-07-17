@@ -1772,7 +1772,7 @@ global.dfail = (type, m, conn) => {
     restrict:'تــم تــفــعـيـل الــتـقـيــيـد「 🚨 」',
   }[type];
   const aa = { quoted: m, userJid: conn.user.jid };
-  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: desc, body: zezo, thumbnail: pp, sourceUrl: cannel } } } }, aa);
+  const prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: tradutor.texto11[0], body: tradutor.texto11[1], thumbnail: pp, sourceUrl: cannel } } } }, aa);
   if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id });
 };
 
